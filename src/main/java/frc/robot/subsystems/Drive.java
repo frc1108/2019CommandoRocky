@@ -22,8 +22,10 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 public class Drive extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.    
+  private final WPI_TalonSRX _leftTalon = new WPI_TalonSRX(RobotMap.leftMotor);
+  private final WPI_VictorSPX _rightVictor = new WPI_VictorSPX(RobotMap.rightMotor);
+  public final DifferentialDrive robotDrive = new DifferentialDrive(_leftTalon,_rightVictor);  
   
-  public DifferentialDrive robotDrive = new DifferentialDrive(new WPI_TalonSRX(RobotMap.leftMotor), new WPI_VictorSPX(RobotMap.rightMotor));  
 /**
  * Simple arcade robot drive
  * @param speed
