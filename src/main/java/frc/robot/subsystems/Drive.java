@@ -32,7 +32,7 @@ public class Drive extends Subsystem {
  * @param turn
  */
   public void arcadeDrive(double speed, double turn) {
-    robotDrive.arcadeDrive(speed, turn);
+    robotDrive.arcadeDrive(RobotMap.DRIVE_TOP_SPEED_FORWARD*speed, RobotMap.DRIVE_TOP_SPEED_TURNING*turn);
   }
 
   @Override

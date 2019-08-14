@@ -28,4 +28,8 @@ public class RobotMap {
   public static int rightStick = 4;
   public static int driveJoystick = 0;
   public static int OPERATOR_JOYSTICK = 1;
+
+  //Drivetrain Characteristics
+  public final static double DRIVE_TOP_SPEED_FORWARD = -0.65;
+  public final static double DRIVE_TOP_SPEED_TURNING = 0.8;
 }
