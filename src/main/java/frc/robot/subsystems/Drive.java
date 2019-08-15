@@ -25,7 +25,12 @@ public class Drive extends Subsystem {
   // here. Call these from Commands.    
   WPI_TalonSRX _leftTal = new WPI_TalonSRX(RobotMap.CAN_ID_LEFT_DRIVE);
   WPI_VictorSPX _rightVic = new WPI_VictorSPX(RobotMap.CAN_ID_RIGHT_DRIVE);
-  DifferentialDrive robotDrive = new DifferentialDrive(_leftTal,_rightVic);  
+  DifferentialDrive robotDrive = new DifferentialDrive(_leftTal,_rightVic);
+  
+  public  void DriveInit(){
+    _leftTal.configOpenloopRamp(0.5);
+    _rightVic.configOpenloopRamp(0.5);
+  }
   
 
   public void CheeseForSpeed(double speed, double turn) {
