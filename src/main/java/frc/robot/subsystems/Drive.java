@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
-import frc.robot.commands.Move;
+import frc.robot.commands.DriveNormal;
 import frc.robot.Robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -23,26 +23,22 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 public class Drive extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.    
-  private final WPI_TalonSRX _leftTalon = new WPI_TalonSRX(RobotMap.leftMotor);
-  private final WPI_VictorSPX _rightVictor = new WPI_VictorSPX(RobotMap.rightMotor);
-  public final DifferentialDrive robotDrive = new DifferentialDrive(_leftTalon,_rightVictor);  
+  WPI_TalonSRX _leftTal = new WPI_TalonSRX(RobotMap.CAN_ID_LEFT_DRIVE);
+  WPI_VictorSPX _rightVic = new WPI_VictorSPX(RobotMap.CAN_ID_RIGHT_DRIVE);
+  DifferentialDrive robotDrive = new DifferentialDrive(_leftTal,_rightVic);  
   
-/**
- * Simple arcade robot drive
- * @param speed
- * @param turn
- */
-  public void arcadeDrive(double speed, double turn) {
+
+  public void CheeseForSpeed(double speed, double turn) {
     double forwardSpeed;
     double turnSpeed;
     boolean turboMode = Robot.m_oi.stick.getRawButton(RobotMap.TURBO_BUTTON);
     if (turboMode) {
-      forwardSpeed = RobotMap.DRIVE_TOP_SPEED_FORWARD;
-      turnSpeed = RobotMap.DRIVE_TOP_SPEED_TURNING;
+      forwardSpeed = RobotMap.TURBO_DRIVE_SPEED;
+      turnSpeed = RobotMap.TURBO_DRIVE_TURN;
     }
     else{
-      forwardSpeed = RobotMap.DRIVE_LOW_SPEED_FORWARD;
-      turnSpeed = RobotMap.DRIVE_LOW_SPEED_TURNING;
+      forwardSpeed = RobotMap.TOP_DRIVE_SPEED;
+      turnSpeed = RobotMap.TOP_DRIVE_TURN;
     }
 
     robotDrive.arcadeDrive(forwardSpeed*speed, turnSpeed*turn);
@@ -52,6 +48,6 @@ public class Drive extends Subsystem {
   public  void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new Move());
+    setDefaultCommand(new DriveNormal());
   }
 }

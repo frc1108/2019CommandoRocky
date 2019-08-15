@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class Move extends Command {
-  public Move() {
+public class DriveNormal extends Command {
+  public DriveNormal() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.m_drive);
   }
@@ -25,7 +25,7 @@ public class Move extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-   Robot.m_drive.arcadeDrive(Robot.m_oi.stick.getRawAxis(RobotMap.leftStick), Robot.m_oi.stick.getRawAxis(RobotMap.rightStick));
+   Robot.m_drive.CheeseForSpeed(Robot.m_oi.stick.getRawAxis(RobotMap.JOY_AXIS_SPEED), Robot.m_oi.stick.getRawAxis(RobotMap.JOY_AXIS_TURN));
   }
 
   // Make this return true when this Command no longer needs to run execute()
