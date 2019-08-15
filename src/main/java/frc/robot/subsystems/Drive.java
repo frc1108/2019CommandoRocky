@@ -13,8 +13,6 @@ import frc.robot.RobotMap;
 import frc.robot.commands.Move;
 import frc.robot.Robot;
 
-import javax.lang.model.util.ElementScanner6;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
