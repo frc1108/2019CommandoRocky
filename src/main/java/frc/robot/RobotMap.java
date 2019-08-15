@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.GenericHID;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -28,8 +30,11 @@ public class RobotMap {
   public static int rightStick = 4;
   public static int driveJoystick = 0;
   public static int OPERATOR_JOYSTICK = 1;
+  public static int TURBO_BUTTON = 1;
 
   //Drivetrain Characteristics
-  public final static double DRIVE_TOP_SPEED_FORWARD = -0.65;
+  public final static double DRIVE_TOP_SPEED_FORWARD = 0.8;
   public final static double DRIVE_TOP_SPEED_TURNING = 0.8;
+  public final static double DRIVE_LOW_SPEED_FORWARD = 0.6;
+  public final static double DRIVE_LOW_SPEED_TURNING = 0.6;
 }

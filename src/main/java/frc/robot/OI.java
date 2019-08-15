@@ -8,7 +8,12 @@
 package frc.robot;
 
 import frc.robot.RobotMap;
+
+import com.ctre.phoenix.ButtonMonitor;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Button;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -21,7 +26,9 @@ public class OI {
   // You create one by telling it which joystick it's on and which button
   // number it is.
   public Joystick stick = new Joystick(RobotMap.driveJoystick);
-  // Button button = new JoystickButton(stick, buttonNumber);
+  
+  //public Button button = new JoystickButton(stick, buttonNumber);
+  public Button turbo = new JoystickButton(stick, RobotMap.TURBO_BUTTON);
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
@@ -34,6 +41,8 @@ public class OI {
   // Start the command when the button is pressed and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenPressed(new ExampleCommand());
+  // button.whenPressed(new DRIVE_TOP_SPEED);
+
 
   // Run the command while the button is being held down and interrupt it once
   // the button is released.

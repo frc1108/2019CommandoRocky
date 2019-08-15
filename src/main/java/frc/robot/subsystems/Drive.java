@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 import frc.robot.commands.Move;
+import frc.robot.Robot;
+
+import javax.lang.model.util.ElementScanner6;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
@@ -32,7 +35,19 @@ public class Drive extends Subsystem {
  * @param turn
  */
   public void arcadeDrive(double speed, double turn) {
-    robotDrive.arcadeDrive(RobotMap.DRIVE_TOP_SPEED_FORWARD*speed, RobotMap.DRIVE_TOP_SPEED_TURNING*turn);
+    double forwardSpeed;
+    double turnSpeed;
+    boolean turboMode = Robot.m_oi.stick.getRawButton(RobotMap.TURBO_BUTTON);
+    if (turboMode) {
+      forwardSpeed = RobotMap.DRIVE_TOP_SPEED_FORWARD;
+      turnSpeed = RobotMap.DRIVE_TOP_SPEED_TURNING;
+    }
+    else{
+      forwardSpeed = RobotMap.DRIVE_LOW_SPEED_FORWARD;
+      turnSpeed = RobotMap.DRIVE_LOW_SPEED_TURNING;
+    }
+
+    robotDrive.arcadeDrive(forwardSpeed*speed, turnSpeed*turn);
   }
 
   @Override
